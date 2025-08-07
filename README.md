@@ -2,7 +2,34 @@
 
 A React-based website built with Vite, Tailwind CSS, and Radix UI components.
 
-## Docker Setup
+## Deployment Options
+
+### GitHub Pages (Recommended)
+
+The website is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+#### Prerequisites
+- GitHub repository
+- GitHub Pages enabled in repository settings
+
+#### Setup Steps
+
+1. **Enable GitHub Pages:**
+   - Go to your repository Settings → Pages
+   - Set Source to "GitHub Actions"
+
+2. **Push to main branch:**
+   ```bash
+   git push origin main
+   ```
+   The website will automatically deploy to: `https://yourusername.github.io/website/`
+
+3. **Manual deployment (if needed):**
+   ```bash
+   ./deploy.sh
+   ```
+
+### Docker Setup
 
 ### Prerequisites
 
