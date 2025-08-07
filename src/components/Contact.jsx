@@ -1,55 +1,74 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Button } from "./ui/button";
+import ukraineImage from "../assets/ukraine.jpg";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    budget: '',
-    timeline: '',
-    message: ''
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    budget: "",
+    timeline: "",
+    message: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // In a real implementation, this would send the form data to a backend
-    alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+    alert(
+      "Thank you for your inquiry! We will get back to you within 24 hours."
+    );
     setFormData({
-      name: '',
-      company: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      budget: '',
-      timeline: '',
-      message: ''
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      projectType: "",
+      budget: "",
+      timeline: "",
+      message: "",
     });
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="contact"
+      className="py-20 bg-gray-900 relative overflow-hidden"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={ukraineImage}
+          alt="Ukraine background"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-gray-900/80 to-purple-900/60"></div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 font-inter">
             Get In Touch
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto font-source-sans">
-            Ready to transform your business with AI? Let's discuss your project and 
-            explore how our Danish-Ukrainian team can help you achieve your goals.
+            Ready to transform your business with AI? Let's discuss your project
+            and explore how our Danish-Ukrainian team can help you achieve your
+            goals.
           </p>
         </div>
 
@@ -58,7 +77,7 @@ const Contact = () => {
           <div className="lg:col-span-1">
             <div className="space-y-8">
               {/* Office Information */}
-              <Card className="dark-card border-0 shadow-lg">
+              <Card className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-white font-inter">
                     Copenhagen Office
@@ -70,13 +89,14 @@ const Contact = () => {
                     <div>
                       <p className="text-white font-medium">Address</p>
                       <p className="text-gray-400 text-sm">
-                        Vesterbrogade 1A<br />
+                        Vesterbrogade 1A
+                        <br />
                         1620 Copenhagen V<br />
                         Denmark
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <Phone className="w-5 h-5 text-orange-400 mt-1" />
                     <div>
@@ -85,22 +105,25 @@ const Contact = () => {
                       <p className="text-gray-400 text-sm">+45 87 65 43 21</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <Mail className="w-5 h-5 text-orange-400 mt-1" />
                     <div>
                       <p className="text-white font-medium">Email</p>
                       <p className="text-gray-400 text-sm">hello@coreai.dk</p>
-                      <p className="text-gray-400 text-sm">projects@coreai.dk</p>
+                      <p className="text-gray-400 text-sm">
+                        projects@coreai.dk
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start space-x-3">
                     <Clock className="w-5 h-5 text-orange-400 mt-1" />
                     <div>
                       <p className="text-white font-medium">Business Hours</p>
                       <p className="text-gray-400 text-sm">
-                        Monday - Friday: 9:00 - 17:00 CET<br />
+                        Monday - Friday: 9:00 - 17:00 CET
+                        <br />
                         Saturday - Sunday: Closed
                       </p>
                     </div>
@@ -109,30 +132,34 @@ const Contact = () => {
               </Card>
 
               {/* Quick Contact Options */}
-              <Card className="purple-gradient border-0 shadow-lg text-white">
+              <Card className="orange-gradient border-0 shadow-lg text-white">
                 <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-4 font-inter">Quick Contact</h3>
+                  <h3 className="text-lg font-bold mb-4 font-inter">
+                    Quick Contact
+                  </h3>
                   <div className="space-y-3">
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20"
-                      onClick={() => window.open('mailto:hello@coreai.dk')}
+                      onClick={() => window.open("mailto:hello@coreai.dk")}
                     >
                       <Mail className="w-4 h-4 mr-2" />
                       Send Email
                     </Button>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20"
-                      onClick={() => window.open('tel:+4512345678')}
+                      onClick={() => window.open("tel:+4512345678")}
                     >
                       <Phone className="w-4 h-4 mr-2" />
                       Call Now
                     </Button>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="w-full bg-white/10 border-white/20 text-white hover:bg-white/20"
-                      onClick={() => document.getElementById('chatbot-trigger')?.click()}
+                      onClick={() =>
+                        document.getElementById("chatbot-trigger")?.click()
+                      }
                     >
                       <Send className="w-4 h-4 mr-2" />
                       Chat with AI
@@ -145,20 +172,24 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="dark-card border-0 shadow-xl">
+            <Card className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-white font-inter">
                   Start Your AI Journey
                 </CardTitle>
                 <p className="text-gray-300 font-source-sans">
-                  Tell us about your project and we'll get back to you within 24 hours.
+                  Tell us about your project and we'll get back to you within 24
+                  hours.
                 </p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Full Name *
                       </label>
                       <input
@@ -172,9 +203,12 @@ const Contact = () => {
                         placeholder="Your full name"
                       />
                     </div>
-                    
+
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Company *
                       </label>
                       <input
@@ -192,7 +226,10 @@ const Contact = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Email Address *
                       </label>
                       <input
@@ -206,9 +243,12 @@ const Contact = () => {
                         placeholder="your.email@company.com"
                       />
                     </div>
-                    
+
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -225,7 +265,10 @@ const Contact = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="projectType" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="projectType"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Project Type *
                       </label>
                       <select
@@ -237,18 +280,29 @@ const Contact = () => {
                         className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 text-white"
                       >
                         <option value="">Select project type</option>
-                        <option value="machine-learning">Machine Learning Implementation</option>
+                        <option value="machine-learning">
+                          Machine Learning Implementation
+                        </option>
                         <option value="nlp">Natural Language Processing</option>
                         <option value="computer-vision">Computer Vision</option>
-                        <option value="ai-strategy">AI Strategy Consulting</option>
-                        <option value="custom-development">Custom AI Development</option>
-                        <option value="data-analytics">Data Analytics & Insights</option>
+                        <option value="ai-strategy">
+                          AI Strategy Consulting
+                        </option>
+                        <option value="custom-development">
+                          Custom AI Development
+                        </option>
+                        <option value="data-analytics">
+                          Data Analytics & Insights
+                        </option>
                         <option value="other">Other</option>
                       </select>
                     </div>
-                    
+
                     <div>
-                      <label htmlFor="budget" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label
+                        htmlFor="budget"
+                        className="block text-sm font-medium text-gray-300 mb-2"
+                      >
                         Budget Range
                       </label>
                       <select
@@ -269,7 +323,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="timeline"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Project Timeline
                     </label>
                     <select
@@ -289,7 +346,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Project Description *
                     </label>
                     <textarea
@@ -304,7 +364,7 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     className="w-full orange-gradient hover:opacity-90 text-white py-4 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 flex items-center justify-center space-x-2 border-0"
                   >
@@ -322,4 +382,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

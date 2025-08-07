@@ -13,18 +13,20 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 coreai-gradient"></div>
-      <div className="absolute inset-0 hero-pattern"></div>
-      
-      {/* Background Image Overlay */}
-      <div className="absolute inset-0 opacity-10">
+      {/* Background Image */}
+      <div className="absolute inset-0">
         <img 
           src={denmarkImage} 
           alt="Denmark landscape" 
           className="w-full h-full object-cover"
         />
       </div>
+      
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-purple-900/40"></div>
+      
+      {/* Additional Pattern Overlay */}
+      <div className="absolute inset-0 hero-pattern opacity-20"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">

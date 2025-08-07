@@ -76,11 +76,11 @@ const FAQ = () => {
         <div className="max-w-4xl mx-auto">
           <div className="space-y-4">
             {faqItems.map((item, index) => (
-              <Card key={index} className="dark-card border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+              <Card key={index} className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-0">
                   <button
                     onClick={() => toggleItem(index)}
-                    className="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-inset"
+                    className="w-full text-left p-6 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-inset bg-transparent"
                   >
                     <div className="flex items-center justify-between">
                       <h3 className="text-lg font-semibold text-white pr-4 font-inter">
@@ -113,7 +113,7 @@ const FAQ = () => {
 
         {/* Contact CTA */}
         <div className="text-center mt-16">
-          <div className="dark-card rounded-2xl shadow-xl p-8 lg:p-12 max-w-2xl mx-auto">
+          <div className="bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-2xl shadow-xl p-8 lg:p-12 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-white mb-4 font-inter">
               Still have questions?
             </h3>
