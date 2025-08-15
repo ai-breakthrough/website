@@ -1,39 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Brain } from 'lucide-react';
-import { Button } from './ui/button';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Brain } from "lucide-react";
+import { Button } from "./ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Hide header when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // Hide when scrolling down
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true); // Show when scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'FAQ', href: '#faq' },
-    { name: 'Contact', href: '#contact' }
+    { name: "Approach", href: "#approach" },
+    { name: "Services", href: "#services" },
+    { name: "Use Cases", href: "#use-cases" },
+    { name: "Tools & Platforms", href: "#tools-platforms" },
+    { name: "About", href: "#about" },
   ];
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false);
+  };
+
+  const scrollToBooking = () => {
+    const element = document.querySelector("#booking-cta");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/95 backdrop-blur-md shadow-lg border-b border-orange-500/20' : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isVisible
+          ? "translate-y-0 bg-black/20 backdrop-blur-md"
+          : "-translate-y-full"
+      }`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -42,7 +65,7 @@ const Header = () => {
               <Brain className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl lg:text-2xl font-bold text-white font-inter">
-              Core<span className="coreai-text-gradient">AI</span>.dk
+              Core<span className="coreai-text-gradient">AI</span>
             </span>
           </div>
 
@@ -61,11 +84,11 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button 
-              onClick={() => scrollToSection('#contact')}
+            <Button
+              onClick={scrollToBooking}
               className="orange-gradient hover:opacity-90 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 hover:shadow-lg border-0"
             >
-              Get Started
+              Book Session
             </Button>
           </div>
 
@@ -84,23 +107,23 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md shadow-lg border-t border-orange-500/20">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-black/80 backdrop-blur-md shadow-lg border-t border-orange-500/20">
             <nav className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-3 text-gray-300 hover:text-orange-400 hover:bg-gray-800 rounded-lg font-medium transition-all duration-200 font-source-sans"
+                  className="block w-full text-left px-4 py-3 text-gray-300 hover:text-orange-400 hover:bg-gray-800 rounded-lg font-medium transition-colors duration-200 font-source-sans"
                 >
                   {item.name}
                 </button>
               ))}
               <div className="pt-4 border-t border-gray-800">
-                <Button 
-                  onClick={() => scrollToSection('#contact')}
+                <Button
+                  onClick={scrollToBooking}
                   className="w-full orange-gradient hover:opacity-90 text-white py-3 rounded-lg font-medium transition-all duration-200 border-0"
                 >
-                  Get Started
+                  Book Session
                 </Button>
               </div>
             </nav>
@@ -112,4 +135,3 @@ const Header = () => {
 };
 
 export default Header;
-

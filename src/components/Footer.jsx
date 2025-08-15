@@ -1,146 +1,117 @@
-import React from 'react';
-import { Brain, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import React from "react";
+import { Brain, Mail, MapPin, Phone } from "lucide-react";
 
 const Footer = () => {
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const scrollToBooking = () => {
+    const element = document.querySelector("#booking-cta");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <footer className="bg-black text-white border-t border-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 orange-gradient rounded-lg flex items-center justify-center">
-                <Brain className="w-6 h-6 text-white" />
+    <footer className="bg-gray-900 text-white py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left: Tagline + Copyright */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 orange-gradient rounded-lg flex items-center justify-center">
+                <Brain className="w-5 h-5 text-white" />
               </div>
               <span className="text-xl font-bold font-inter">
-                Core<span className="coreai-text-gradient">AI</span>.dk
+                Core<span className="coreai-text-gradient">AI</span>
               </span>
             </div>
-            <p className="text-gray-300 mb-6 font-source-sans">
-              Danish-Ukrainian AI consultancy delivering innovative B2B solutions 
-              that transform businesses while supporting Ukraine.
+            <p className="text-gray-400 font-source-sans">
+              Transforming business operations with intelligent AI solutions
             </p>
-            <div className="flex items-center space-x-2 text-sm text-gray-400">
-              <Heart className="w-4 h-4 text-red-500" />
-              <span>Supporting Ukraine 🇺🇦</span>
+            <p className="text-gray-500 text-sm font-source-sans">
+              © 2024 CoreAI. All rights reserved.
+            </p>
+          </div>
+
+          {/* Middle: Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold font-inter">Quick Links</h3>
+            <div className="space-y-2">
+              <button
+                onClick={() => scrollToSection("#approach")}
+                className="block text-gray-400 hover:text-orange-400 transition-colors duration-200 font-source-sans"
+              >
+                Approach
+              </button>
+              <button
+                onClick={() => scrollToSection("#services")}
+                className="block text-gray-400 hover:text-orange-400 transition-colors duration-200 font-source-sans"
+              >
+                Services
+              </button>
+              <button
+                onClick={() => scrollToSection("#use-cases")}
+                className="block text-gray-400 hover:text-orange-400 transition-colors duration-200 font-source-sans"
+              >
+                Use Cases
+              </button>
+              <button
+                onClick={() => scrollToSection("#tools-platforms")}
+                className="block text-gray-400 hover:text-orange-400 transition-colors duration-200 font-source-sans"
+              >
+                Tools & Platforms
+              </button>
+              <button
+                onClick={() => scrollToSection("#about")}
+                className="block text-gray-400 hover:text-orange-400 transition-colors duration-200 font-source-sans"
+              >
+                About
+              </button>
+              <button
+                onClick={scrollToBooking}
+                className="block text-gray-400 hover:text-orange-400 transition-colors duration-200 font-source-sans"
+              >
+                Book Session
+              </button>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 font-inter">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <button 
-                  onClick={() => scrollToSection('#home')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-source-sans"
-                >
-                  Home
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('#services')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-source-sans"
-                >
-                  Services
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('#about')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-source-sans"
-                >
-                  About Us
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('#faq')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-source-sans"
-                >
-                  FAQ
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => scrollToSection('#contact')}
-                  className="text-gray-300 hover:text-white transition-colors duration-200 font-source-sans"
-                >
-                  Contact
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 font-inter">Our Services</h3>
-            <ul className="space-y-3 text-gray-300 font-source-sans">
-              <li>Machine Learning Implementation</li>
-              <li>Natural Language Processing</li>
-              <li>Computer Vision Solutions</li>
-              <li>AI Strategy Consulting</li>
-              <li>Custom AI Development</li>
-              <li>Data Analytics & Insights</li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6 font-inter">Contact Info</h3>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-blue-400 mt-1" />
-                <div className="text-gray-300 text-sm font-source-sans">
-                  <p>Vesterbrogade 1A</p>
-                  <p>1620 Copenhagen V</p>
-                  <p>Denmark</p>
-                </div>
+          {/* Right: Location & Contact */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold font-inter">Contact</h3>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3 text-gray-400">
+                <MapPin className="w-5 h-5 text-orange-400" />
+                <span className="font-source-sans">Copenhagen, Denmark</span>
               </div>
-              
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-400" />
-                <div className="text-gray-300 text-sm font-source-sans">
-                  <p>+45 12 34 56 78</p>
-                </div>
+              <div className="flex items-center space-x-3 text-gray-400">
+                <Mail className="w-5 h-5 text-orange-400" />
+                <a
+                  href="mailto:hello@coreai.dk"
+                  className="font-source-sans hover:text-orange-400 transition-colors duration-200"
+                >
+                  hello@coreai.dk
+                </a>
               </div>
-              
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-400" />
-                <div className="text-gray-300 text-sm font-source-sans">
-                  <p>hello@coreai.dk</p>
-                </div>
+              <div className="flex items-center space-x-3 text-gray-400">
+                <Phone className="w-5 h-5 text-orange-400" />
+                <span className="font-source-sans">+45 XX XX XX XX</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0 font-source-sans">
-              © 2024 CoreAI.dk. All rights reserved. Made with ❤️ in Denmark and Ukraine.
-            </div>
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <button className="hover:text-white transition-colors duration-200">
-                Privacy Policy
-              </button>
-              <button className="hover:text-white transition-colors duration-200">
-                Terms of Service
-              </button>
-              <button className="hover:text-white transition-colors duration-200">
-                Cookie Policy
-              </button>
-            </div>
-          </div>
+        {/* Bottom Border */}
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+          <p className="text-gray-500 text-sm font-source-sans">
+            Empowering businesses with intelligent automation and AI-driven
+            insights
+          </p>
         </div>
       </div>
     </footer>
@@ -148,4 +119,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
